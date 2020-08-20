@@ -9,11 +9,13 @@
     "axios": "^0.19.2",
     "directory-tree": "^2.2.4",
     "markdown-react-js": "^1.0.2",
+    "markdown-to-jsx": "^6.11.4",
     "marked": "^1.1.1",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-burger-menu": "^2.7.1",
     "react-dom": "^16.13.1",
+    "react-markdown-editor": "^1.0.0",
     "react-scripts": "3.4.3",
     "react-simple-sidenav": "^2.0.0",
     "react-slide-menu": "^0.5.1"

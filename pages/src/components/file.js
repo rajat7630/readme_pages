@@ -26,7 +26,7 @@ class File extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.clickHandler}>{this.state.tree.name}</button>
+                <button className="bg-blue-900 text-white w-64 text-2xl font-bold pt-2 pb-2" onClick={this.clickHandler}>{this.state.tree.name}</button>
             </div>
         )
     }

@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Folder from "./folder";
 import MDReactComponent from 'markdown-react-js';
-import { slide as Menu } from 'react-burger-menu'
-
+import "./filefolder.css"
 class FileFolder extends Component {
     constructor(props) {
         super(props);
         this.state = {
             tree: undefined,
-            htmlData: "",
+            htmlData: "hello",
+            expand: false,
             slideMenuActive: false,
         };
         this.markupHandler = this.markupHandler.bind(this);
@@ -32,21 +32,32 @@ class FileFolder extends Component {
             htmlData: data
         })
     }
-
-
     render() {
+        const TAGS = {
+            html: 'span', // root node, replaced by default
+            strong: 'b',
+            em: 'i'
+        }
         let res = (this.state.tree) ? (<div>
             <Folder data={this.state.tree} getSrcFile={(data) => this.markupHandler(data)} />
         </div>) : (<div>Loading....</div>)
         return (
-            <div>
-                <div>
-                    <Menu left disableOverlayClick  className="bg-red text-green w-64 pt-64">
-                        <div>{res}</div>
-                    </Menu>
+            <div className="flex bg-blue-400 bodyyy">
+                <div className={`${this.state.expand ? "hidden" : "flex"}`} onClick={() => { this.setState({ expand: true }) }} >
+                    <i className="fa fa-bars burger text-blue-900"></i>
                 </div>
-                <div>
-                    <MDReactComponent text={this.state.htmlData} />
+                <div className={`flex-initial ${this.state.expand ? "flex" : "hidden"} navv overflow-scroll navv example`}>
+                    <div className=" bg-blue-800 navbar">
+                        <div>
+                            <i onClick={() => { this.setState({ expand: false }) }} className="fa fa-close text-white text-3xl font-normal float-right"></i>
+                        </div>
+                        <div className="mt-10">
+                            {res}
+                        </div>
+                    </div>
+                </div>
+                <div className="flex-initial bodd overflow-scroll text-gray-900 example">
+                    <MDReactComponent text={this.state.htmlData} tags={TAGS} />
                 </div>
             </div>
         )

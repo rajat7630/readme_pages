@@ -9,8 +9,8 @@ class Folder extends Component {
             expand: false,
         };
         this.clickHandler = this.clickHandler.bind(this);
-        this.dataHandler= this.dataHandler.bind(this);
-        this.fileHandler=this.fileHandler.bind(this);
+        this.dataHandler = this.dataHandler.bind(this);
+        this.fileHandler = this.fileHandler.bind(this);
     }
 
     componentDidMount() {
@@ -24,11 +24,11 @@ class Folder extends Component {
             expand: ex
         });
     }
-    dataHandler=(data)=>{
+    dataHandler = (data) => {
         console.log(data);
         this.props.getSrcFile(data);
     }
-    fileHandler=(data)=>{
+    fileHandler = (data) => {
         console.log(data);
         this.props.getSrcFile(data);
     }
@@ -36,16 +36,19 @@ class Folder extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.clickHandler}>{this.state.tree.name}</button>
+                <button className="bg-blue-900 text-white w-64 text-2xl pt-2 pb-2 mb-2 font-bold" onClick={this.clickHandler}>
+                    {this.state.tree.name} 
+                    <i className="float-right pt-1 mr-3 fa fa-chevron-circle-down text-white-900 iccon"></i>
+                </button>
                 <ul>{(this.state.expand) ?
                     (
                         this.state.tree.children.map(child => {
                             // console.log(child);
                             if (child.children) {
-                                return (<li><Folder data={child} getSrcFile = {(data)=>{this.fileHandler(data)}}/></li>)
+                                return (<li><Folder data={child} getSrcFile={(data) => { this.fileHandler(data) }} /></li>)
                             }
                             else {
-                                return (<li><File data={child} sendData={(data)=>{this.dataHandler(data)}}/></li>)
+                                return (<li><File data={child} sendData={(data) => { this.dataHandler(data) }} /></li>)
                             }
                         })
                     ) : (null)}</ul>
