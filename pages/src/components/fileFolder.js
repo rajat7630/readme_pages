@@ -36,13 +36,14 @@ class FileFolder extends Component {
         const TAGS = {
             html: 'span', // root node, replaced by default
             strong: 'b',
-            em: 'i'
+            em: 'i', 
+            link:'a'
         }
         let res = (this.state.tree) ? (<div>
             <Folder data={this.state.tree} getSrcFile={(data) => this.markupHandler(data)} />
         </div>) : (<div>Loading....</div>)
         return (
-            <div className="flex bg-blue-400 bodyyy">
+            <div className="flex bg-blue-400">
                 <div className={`${this.state.expand ? "hidden" : "flex"}`} onClick={() => { this.setState({ expand: true }) }} >
                     <i className="fa fa-bars burger text-blue-900"></i>
                 </div>

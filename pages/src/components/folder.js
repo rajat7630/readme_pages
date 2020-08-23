@@ -36,7 +36,7 @@ class Folder extends Component {
     render() {
         return (
             <div>
-                <button className="bg-blue-900 text-white w-64 text-2xl pt-2 pb-2 mb-2 font-bold" onClick={this.clickHandler}>
+                <button className="bg-blue-900 text-white butt text-2xl pt-2 pb-2 mb-2 font-bold" onClick={this.clickHandler}>
                     {this.state.tree.name} 
                     <i className="float-right pt-1 mr-3 fa fa-chevron-circle-down text-white-900 iccon"></i>
                 </button>
