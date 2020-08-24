@@ -27,7 +27,7 @@ app.post("/file", (req, res) => {
 
 
 
-
-app.listen(8000, () => {
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
     console.log("started");
 })
